@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <script type="text/javascript" src="jquery-3.6.1.min.js"></script>
+</head>
+<body onload="generateNewImage()">
+    <div id="img-cont">
+        <!-- <img src="https://picsum.photos/200" id="randPicId" alt="a random image"> -->
+    </div>
+    <div class="contact-title-cont" id="contact-id">
+        <div class="contact-cont">
+            <form name="contactForm" id="contactFormId">
+                <span class="contact-item">
+                    <label for="youremail" class="contact-label" id="required">Your Email</label><br>
+                    <input type="text" id="youremail" name="youremail"><br><br>
+                </span>
+                <span class="sub-item">
+                    <button type="button" onclick="return validateForm(document.contactForm.youremail)" class="subscribe-but">Submit</button>
+                </span>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
