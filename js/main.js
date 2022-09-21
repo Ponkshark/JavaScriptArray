@@ -2,13 +2,14 @@
 
 const randImage = "https://picsum.photos/200";
 let imgUrl;
+let i = 0;
 
 //Takes the random image and adds it into the html
 
 function getImage() {
   fetch(randImage).then(response => {
-    document.getElementById("img-cont").innerHTML = `<img src=${randImage} id='randPicId' alt='a random image'>`
     imgUrl = response.url;
+    document.getElementById("img-cont").innerHTML = `<img src=${imgUrl} id='randPicId' alt='a random image'>`
   })
 }
 
@@ -29,15 +30,18 @@ function validateForm(inputText) {
     }
     if (inputText.value.match(mailformat)) {
       document.contactForm.youremail.focus();
-      alert("Form submitted");
       let emailValue = document.getElementById("youremail").value;
-      //if email doesnt exist, push email, else don't push
-      if (myArray.includes(emailValue) === false){
+      //check if the email already exists in the array
+      if (myArray.includes(emailValue)){
+        // if so, find where the email is, and add the img url right after
+        myArray.splice(myArray.indexOf(emailValue)+1, 0, imgUrl);
+      }else{
+        // else add a new email to the end of the array with the img url after
         myArray.push(emailValue);
+        myArray.push(imgUrl);
       }
-      //TODO if array exists, push url, else create new array and push url
-      myArray.push(imgUrl);
       console.log(myArray);
+      generateTable();
       getImage();
       return true;
     } else {
@@ -50,5 +54,17 @@ function validateForm(inputText) {
 // Assign the image to an email address (pop removes from end, shift from beginning)
 
 
-// Display all images assigned to each email address, each email address should only display once
+// generates the table containing the emails and the images
 
+function generateTable(){
+  document.getElementById("row").innerHTML = "";
+  for (var i = 0; i < myArray.length; i++){
+    if (myArray[i].includes("https://") === false){
+      document.getElementById("row").innerHTML += `<br>`;
+      document.getElementById("row").innerHTML += `${myArray[i]}`;
+    }
+    else {
+      document.getElementById("row").innerHTML += `<img src="${myArray[i]}"></img>`;
+    }
+  }
+}
