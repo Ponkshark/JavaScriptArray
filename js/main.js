@@ -1,13 +1,22 @@
-// Loads an image from https://picsum.photos/ 
+// Loads an image from https://picsum.photos/200
 
-let randImage = fetch("https://picsum.photos/200");
+const randImage = "https://picsum.photos/200";
+let imgUrl;
 
-function generateNewImage() {
-    document.getElementById("img-cont").innerHTML += `<img src=${randImage} id='randPicId' alt='a random image'>`
+//Takes the random image and adds it into the html
+
+function getImage() {
+  fetch(randImage).then(response => {
+    document.getElementById("img-cont").innerHTML = `<img src=${randImage} id='randPicId' alt='a random image'>`
+    imgUrl = response.url;
+  })
 }
 
+//creates new random image on window load
+$(window).on('load', getImage);
 
-// To store the images
+
+// To store the images and emails
 myArray = [];
 
 // Email address validation 
@@ -22,8 +31,14 @@ function validateForm(inputText) {
       document.contactForm.youremail.focus();
       alert("Form submitted");
       let emailValue = document.getElementById("youremail").value;
-      myArray.push(emailValue);
+      //if email doesnt exist, push email, else don't push
+      if (myArray.includes(emailValue) === false){
+        myArray.push(emailValue);
+      }
+      //TODO if array exists, push url, else create new array and push url
+      myArray.push(imgUrl);
       console.log(myArray);
+      getImage();
       return true;
     } else {
       alert("You have entered an invalid email address!");
@@ -33,9 +48,6 @@ function validateForm(inputText) {
 }
 
 // Assign the image to an email address (pop removes from end, shift from beginning)
-
-
-// Then display a new image 
 
 
 // Display all images assigned to each email address, each email address should only display once
