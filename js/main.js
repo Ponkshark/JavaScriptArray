@@ -9,7 +9,7 @@ let i = 0;
 function getImage() {
   fetch(randImage).then(response => {
     imgUrl = response.url;
-    document.getElementById("img-cont").innerHTML = `<img src=${imgUrl} id='randPicId' alt='a random image'>`
+    document.getElementById("img-cont").innerHTML = `<div id="center-img"><img src=${imgUrl} id='randPicId' alt='a random image'></div>`
   })
 }
 
@@ -61,10 +61,10 @@ function generateTable(){
   for (var i = 0; i < myArray.length; i++){
     if (myArray[i].includes("https://") === false){
       document.getElementById("row").innerHTML += `<br>`;
-      document.getElementById("row").innerHTML += `${myArray[i]}`;
+      document.getElementById("row").innerHTML += `<div id="row-title"><h3>${myArray[i]}</h3></div>`;
     }
     else {
-      document.getElementById("row").innerHTML += `<img src="${myArray[i]}"></img>`;
+      document.getElementById("row").innerHTML += `<div id="row-item"><img src="${myArray[i]}"></img></div>`;
     }
   }
 }
