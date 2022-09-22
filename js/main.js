@@ -61,7 +61,7 @@ function generateTable(){
   for (var i = 0; i < myArray.length; i++){
     if (myArray[i].includes("https://") === false){
       document.getElementById("row").innerHTML += `<br>`;
-      document.getElementById("row").innerHTML += `<div id="row-title"><h3>${myArray[i]}</h3></div>`;
+      document.getElementById("row").innerHTML += `<div id="row-title"><h2>${myArray[i]}</h2></div>`;
     }
     else {
       document.getElementById("row").innerHTML += `<div id="row-item"><img src="${myArray[i]}"></img></div>`;
