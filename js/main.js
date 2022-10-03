@@ -37,7 +37,12 @@ function validateForm(inputText) {
       //check if the email already exists in the array
       if (myArray.includes(emailValue)){
         // if so, find where the email is, and add the img url right after
+        if (myArray[(myArray.indexOf(emailValue)+1)] === imgUrl){
+          $result.text("Email address already has the current image assigned to it");
+          $result.css('color', 'red');
+        } else {
         myArray.splice(myArray.indexOf(emailValue)+1, 0, imgUrl);
+        }
       }else{
         // else add a new email to the end of the array with the img url after
         myArray.push(emailValue);
@@ -45,7 +50,7 @@ function validateForm(inputText) {
       }
       // console.log(myArray); was used during testing
       generateTable();
-      getImage();
+      // getImage(); not used, add if you require a new image on submit button press
       return true;
     } else {
       $result.text("You have entered an invalid email address!");
@@ -54,8 +59,6 @@ function validateForm(inputText) {
       return false;
     }
 }
-
-// Assign the image to an email address (pop removes from end, shift from beginning)
 
 
 // generates the table containing the emails and the images

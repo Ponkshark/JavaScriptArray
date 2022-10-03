@@ -1,8 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <script type="text/javascript" src="jquery-3.6.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.6.1.min.js"></script>
+    <title>JavaScript Image Array</title>
 </head>
 <body>
     <div id="img-cont">
@@ -15,9 +17,14 @@
                     <span id="result"></span><br>
                     <input type="text" id="youremail" name="youremail"><br><br>
                 </span>
+                <span class="req-item">
+                    <button type="button" onclick="return getImage()" class="req-but">Request Image</button>
+                </span>
+                <br><br>
                 <span class="sub-item">
                     <button type="button" onclick="return validateForm(document.contactForm.youremail)" class="subscribe-but">Submit</button>
                 </span>
+                
             </form>
         </div>
     </div>
@@ -25,13 +32,6 @@
     </div>
     <div id="column">
     </div>
-
-
-
-
-
-
-
 
 <script src="js/main.js"></script>
 </body>

@@ -34,9 +34,13 @@ button:hover {
     cursor: pointer;
 }
 
-.subscribe-but{
+.subscribe-but, .req-but{
     font-family: Georgia, serif;
     font-size: 15px;
+}
+
+.req-but {
+    width: 100px;
 }
 
 input {
